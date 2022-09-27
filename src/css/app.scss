@@ -1,0 +1,145 @@
+// app global css in SCSS form
+body {
+  //font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Cairo', sans-serif;
+  //height: 10000px;
+  //padding-bottom: 30px;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+p{
+  font-size: 16px;
+  color: $grey;
+}
+.semi-bold{
+  font-weight: 600;
+}
+@mixin absolute-fit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.swiper-pagination {
+  position: relative;
+  margin-top: 40px;
+  .swiper-pagination-bullet {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin: 7px !important;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: transparent;
+    border: 1px solid;
+    transform: scale(1.5);
+  }
+}
+.swiper-container{
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    &:hover {
+      background-color: #000;
+      &::after {
+        color: #fff;
+      }
+    }
+  }
+  &:hover{
+    .swiper-button-prev,
+    .swiper-button-next{
+      opacity: 1;
+      visibility: visible;
+    }
+    .swiper-button-next,
+  .swiper-container-rtl .swiper-button-prev{
+      transform: translateX(-45px);
+    }
+    .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+    transform: translateX(45px);
+
+  }
+  }
+}
+
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: $sm-breakpoint){
+  .container,
+  .container-sm{
+    max-width: 540px
+  }
+}
+
+
+@media (min-width: $md-breakpoint){
+  .container,
+  .container-sm,
+  .container-md{
+
+    max-width: 920px
+  }
+}
+
+
+@media (min-width: $lg-breakpoint){
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg{
+
+    max-width: 1140px
+  }
+}
+
+
+@media (min-width: $xl-breakpoint){
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl{
+    max-width: 1200px
+  }
+}
