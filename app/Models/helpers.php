@@ -67,19 +67,19 @@ use Illuminate\Contracts\Cookie\Factory as CookieFactory;
     }
 
 
-function e_form_error($field = '', $errors)
-{
-    $output = null;
-    if ($errors)
-        $output = $errors->has($field) ? '<span class="invalid-feedback" role="alert"><strong>'.$errors->first($field).'</strong></span>' : '';
-    return $output;
-}
-
-function e_form_invalid_class($field = '', $errors)
-{
-    if ($errors)
-        return $errors->has($field) ? ' is-invalid' : '';
-    return ;
-}
+//function e_form_error($field = '', $errors)
+//{
+//    $output = null;
+//    if ($errors)
+//        $output = $errors->has($field) ? '<span class="invalid-feedback" role="alert"><strong>'.$errors->first($field).'</strong></span>' : '';
+//    return $output;
+//}
+//
+//function e_form_invalid_class($field = '', $errors)
+//{
+//    if ($errors)
+//        return $errors->has($field) ? ' is-invalid' : '';
+//    return ;
+//}
 
 

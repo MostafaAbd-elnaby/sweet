@@ -59,6 +59,7 @@ class OrdersController extends Controller
 //            'billing.postcode'=>  'NO',
 //            'customer.givenName'=>  'asdasd',
 //            'customer.surname'=> 'test',
+//                'ahmed' => 'ok'
         ];
         $token = env('HYPER_PAY_TOKEN');      //env('HYPER_PAY_TOKEN'); 'OGFjN2E0Y2E4MjZlMmMwZDAxODI3ODJmNTg0ZDMxYjF8M2FtOUVkWFNzdA=='
         $response = Http::asForm()->withToken($token)->post($url,$data);
@@ -130,7 +131,7 @@ class OrdersController extends Controller
         $client->post_code = $req->client['post_code']?? null;
         $client->save();
 
-        $order->client_id = $req->client['id'];
+        $order->client_id = $client['id'];
 
         $order->name      = $req->client['name'];
         $order->email     = $req->client['email'];
