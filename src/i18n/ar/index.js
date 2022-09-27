@@ -5,6 +5,7 @@ export default {
   failed: 'Action failed',
   success: 'Action was successful',
   lang:'اللغة',
+  success_payment: 'تم تنفيذ طلبك بنجاح شكرا علي ثقتك فينا.',
   back:"رجوع",
   cancel:'الغاء',
   sort:'ترتيب حسب',

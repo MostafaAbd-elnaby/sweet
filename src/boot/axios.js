@@ -13,8 +13,8 @@ let headers = {
 };
 
 const local = 'http://sweet.build/'
-const server = 'http://sweet-api.alfatechegy.com/'
-const domain = local                      // Change to local for Testing
+const server = 'https://sweet-api.alfatechegy.com/'
+const domain = server                      // Change to local for Testing
 
 const api = axios.create({
   baseURL: domain + 'api/',

@@ -5,6 +5,7 @@ export default {
   failed: 'Action faile',
   success: 'Action was successful',
   lang:'Language',
+  success_payment: 'Your Payment Done Successfully',
   back:"Back",
   cancel:'Cancel',
   sort:'Sort by',

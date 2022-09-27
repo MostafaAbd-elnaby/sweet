@@ -170,7 +170,7 @@ export default {
        const client_id = this.$store.getters['account/guest']
        client_id.id = client_id.id ? client_id.id : false
        // console.log(client_id)
-       const payload = {
+       let payload = {
          client: client_id,
          payment_method: this.credit_card,
          products: this.$store.getters['cart/cartItems'],
@@ -178,12 +178,13 @@ export default {
          sup_total: this.$store.getters['cart/subtotal'],
          shipping_cost: this.$store.getters['cart/shippingCost'],
          total: this.total,
-         currency: this.$store.getters['cart/currency'],
-         credit: this.credit
+         // credit: this.credit
        }
          this.loading = false
+       Cookies.set('client_for_payment', this.$store.getters['account/guest']);
+       console.log(Cookies.get('client_for_payment'))
        if (this.credit_card == "visa"){
-         window.open(`http://sweet.build/paymentForm/${(payload.total)}`, '_blank')
+         window.open(`https://sweet-api.alfatechegy.com/paymentForm/${payload.total}`, '_blank')
        } else {
          // create order
          this.$store.dispatch('order/createOrder',payload).then(()=>{

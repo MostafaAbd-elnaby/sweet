@@ -1,11 +1,14 @@
 <template>
 <!-- translate not compleit -->
   <q-page>
-    <h3 class="text-center q-mb-sm">  Your Payment Done Successfully   </h3>
-    <template >
-      <h5 class="text-center q-mb-sm"> ... {{this.counter}}  </h5>
-    </template>
-    <div class="q-mt-xl q-pa-lg">
+
+    <div class="row items-center">
+      <div class="col-12 text-center ">
+        <q-img width="600px" src="/payment.png" />
+      </div>
+      <div class="col-12 ">
+        <h3 class="text-center q-mb-sm">  {{ $t('success_payment') }}   </h3>
+      </div>
     </div>
     <services class="q-mt-xl" />
   </q-page>
@@ -65,7 +68,7 @@ export default {
         console.log(client_id)
         const payload = {
           id:this.checkout_id,
-          client: client_id,
+          client: Cookies.has('client_for_payment') ? Cookies.get('client_for_payment') : '',
           payment_method: 'visa',
           products: this.$store.getters['cart/cartItems'],
           status: 'pending',
@@ -75,17 +78,30 @@ export default {
           currency: this.$store.getters['cart/currency'],
           credit: this.credit
         }
+      console.log(payload)
         this.$store.dispatch('order/createOrder', payload).then(res => {
           // window.close()
           if (res.status) {
             this.$store.commit('cart/EMPTY_CART')
             Cookies.remove('cart')
+            Cookies.remove('client_for_payment')
             this.$q.notify({
               message: 'Order successfully created',
               color: 'white',
               textColor: 'black',
               timeout: 3000,
             })
+            setTimeout(() => {
+              this.$q.notify({
+                message: 'you will be redirect in 3 seconds',
+                color: 'white',
+                textColor: 'black',
+                timeout: 3000,
+              })
+              this.$router.push('/Account/profile/orders')
+              // window.close();
+            },3000)
+
             // this.$router.push('/Account/profile/orders')
           } else {
             // message error
@@ -98,17 +114,14 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-       this.$router.push('/Account/profile/orders')
-      // window.close();
-    },3000)
+
 
     this.getCheckoutId()
   },
 
   created() {
-    if(!this.$store.getters['account/guest'].name)
-      this.$router.push('/Checkout/information')
+    // if(!this.$store.getters['account/guest'].name)
+    //   this.$router.push('/Checkout/information')
   }
 
 };
